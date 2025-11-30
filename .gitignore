@@ -1,0 +1,30 @@
+## Frontend
+
+# dependencies
+/aurora-frontend/node_modules
+/aurora-frontend/.pnp
+/aurora-frontend/.pnp.js
+
+# testing
+/aurora-frontend/coverage
+
+# production
+/aurora-frontend/build
+
+# misc
+/aurora-frontend/.DS_Store
+/aurora-frontend/.env.local
+/aurora-frontend/.env.development.local
+/aurora-frontend/.env.test.local
+/aurora-frontend/.env.production.local
+
+/aurora-frontend/npm-debug.log*
+/aurora-frontend/yarn-debug.log*
+/aurora-frontend/yarn-error.log*
+
+## Backend
+
+/AuroraForecast/AuroraForecast/bin/
+/AuroraForecast/AuroraForecast/obj/
+/AuroraForecast/AuroraForecast/appsettings.Development.json
+/AuroraForecast/*.vs
