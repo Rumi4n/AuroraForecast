@@ -38,3 +38,5 @@ Data source: https://api.auroras.live/v1/
 - Authentication (Google?)
 - Delete location from UI (backend ready)
 - Frontend tests (unit/components/e2e)
+
+
