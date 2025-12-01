@@ -2,6 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\SourceCode\priv\Aurora\AuroraForecast\AuroraForecast\Properties\PublishProfiles\aurora-forecast-api - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\SourceCode\priv\AF3\AuroraForecast\AuroraForecast\Properties\PublishProfiles\aurora-forecast-api - Web Deploy1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

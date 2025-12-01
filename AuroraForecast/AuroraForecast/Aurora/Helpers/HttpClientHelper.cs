@@ -1,4 +1,4 @@
-namespace AuroraForecast.Aurora.Services;
+namespace AuroraForecast.Aurora.Helpers;
 
 internal class HttpClientHelper
 {
