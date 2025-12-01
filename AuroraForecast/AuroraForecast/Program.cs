@@ -1,3 +1,4 @@
+using AuroraForecast.Aurora.Helpers;
 using AuroraForecast.Aurora.Interfaces;
 using AuroraForecast.Aurora.Services;
 using AuroraForecast.Data;
@@ -58,7 +59,14 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IAuroraService, AuroraService>();
-builder.Services.AddScoped<IAuroraApiWrapper, AuroraApiWrapper>();
+builder.Services.AddScoped<IPolicyProvider, PolicyProvider>();
+builder.Services.AddScoped<AuroraApiWrapper>();
+builder.Services.AddScoped<IAuroraApiWrapper, AuroraApiWrapperWithRetry>(provider =>
+{
+    var auroraApiWrapper = provider.GetRequiredService<AuroraApiWrapper>();
+    var policyProvider = provider.GetRequiredService<IPolicyProvider>();
+    return new AuroraApiWrapperWithRetry(auroraApiWrapper, policyProvider);
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -17,9 +17,9 @@ class AuroraApiWrapperWithRetry : IAuroraApiWrapper
         _policyProvider = policyProvider;
     }
 
-    public async Task<AuroraApiResponse> GetAuroraDataAsync(Location location)
+    public Task<AuroraApiResponse> GetAuroraDataAsync(Location location)
     {
-        return await _policyProvider.GetExternalApiRetryAsyncPolicy()
-            .ExecuteAsync(async () => await _auroraApiWrapper.GetAuroraDataAsync(location));
+        var policy = _policyProvider.GetExternalApiRetryAsyncPolicy();
+        return policy.ExecuteAsync(async () => await _auroraApiWrapper.GetAuroraDataAsync(location));
     }
 }
