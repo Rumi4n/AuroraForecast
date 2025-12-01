@@ -11,7 +11,7 @@ export const Forecast: React.FC = () => {
   const [addLocation, setAddLocation] = useState(false);
   const periodsStart = ["1 AM", "4 AM", "7 AM", "10 AM", "1 PM", "4 PM", "7 PM", "10 PM"];
 
-  const fetchForecast = async () => {
+  const fetchForecast = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -30,7 +30,7 @@ export const Forecast: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId]);
 
   const fetchUserInfo = useCallback(async () => {
     setLoading(true);
@@ -45,7 +45,7 @@ export const Forecast: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [userId]);
+  }, [userId, fetchForecast]);
 
   const saveLocation = useCallback(async () => {
     setLoading(true);
