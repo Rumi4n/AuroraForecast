@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { auroraForecastService, AuroraForecast, userService, User, locationService, Location } from '../services/api';
 import './Forecast.css';
 
@@ -6,7 +6,7 @@ export const Forecast: React.FC = () => {
   const [forecasts, setForecasts] = useState<AuroraForecast[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [userId, setUserId] = useState<number>(10);
+  const [userId] = useState<number>(10);
   const [userInfo, setUserInfo] = useState<User | null>(null);
   const [addLocation, setAddLocation] = useState(false);
   const periodsStart = ["1 AM", "4 AM", "7 AM", "10 AM", "1 PM", "4 PM", "7 PM", "10 PM"];
@@ -32,7 +32,7 @@ export const Forecast: React.FC = () => {
     }
   };
 
-  const fetchUserInfo = async () => {
+  const fetchUserInfo = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -45,9 +45,9 @@ export const Forecast: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId]);
 
-  const saveLocation = async () => {
+  const saveLocation = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -64,20 +64,7 @@ export const Forecast: React.FC = () => {
     } catch (err: any) {
       setError('Failed to add location. Check console for details.');
     }
-  };
-
-  const deleteLocation = async (locationId: number) => {
-    setLoading(true);
-    setError(null);
-    try {
-      await locationService.deleteLocationAsync(locationId);
-      await fetchForecast();
-    } catch (err: any) {
-      setError('Failed to delete location. Check console for details.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [userId, fetchForecast]);
 
   const convertDate = (dateString: Date) => {
     var date = new Date(dateString);
@@ -86,7 +73,7 @@ export const Forecast: React.FC = () => {
 
   useEffect(() => {
     fetchUserInfo();
-  }, []);
+  }, [fetchUserInfo]);
 
   return (
     <div className="forecast-display">
