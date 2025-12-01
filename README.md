@@ -1,10 +1,13 @@
 # Aurora Forecast
 
 A simple app with aurora forecast for requested location.
+
 Data source: https://api.auroras.live/v1/
 
 **Results:**
+
 **API**: https://aurora-forecast-api-bqgbargcerfbamfx.centralus-01.azurewebsites.net/
+
 **UI**: https://calm-glacier-0ff898d10.3.azurestaticapps.net
 
 ## Backend
@@ -36,3 +39,4 @@ Data source: https://api.auroras.live/v1/
 - Delete location from UI (backend ready)
 
 - Frontend tests (unit/components/e2e)
+
